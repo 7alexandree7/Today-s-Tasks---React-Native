@@ -1,14 +1,11 @@
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
-import { api } from "@/convex/_generated/api";
 import useTheme from "@/hooks/useTheme";
-import { useMutation, useQuery } from "convex/react";
+import { ColorScheme } from "@/context/themeContext";
 
 export default function Index() {
 
-  const { toogleDarkMode } = useTheme()
-
-  const todos = useQuery(api.todos.getTodos)
-  const addTodo = useMutation(api.todos.addTodo)
+  const { toogleDarkMode, colors } = useTheme()
+  const styles = createStyle(colors)
 
   return (
     <View style={styles.container}>
@@ -16,18 +13,23 @@ export default function Index() {
       <TouchableOpacity onPress={toogleDarkMode}>
         <Text>Toggle dark mode</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => addTodo({ text: "Walk the dog" })}>
-        <Text>Add todo</Text>
-      </TouchableOpacity>
     </View>
   );
 }
 
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  }
-});
+const createStyle = (colors: ColorScheme) => {
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: colors.bg,
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    content: {
+      fontSize: 12
+    }
+  })
+
+  return styles
+}

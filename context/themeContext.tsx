@@ -88,7 +88,7 @@ const darkColors: ColorScheme = {
 
 interface ThemeContextType {
     isDarkMode: boolean
-    toogleTheme: () => void
+    toogleDarkMode: () => void
     colors: ColorScheme;
 }
 
@@ -108,7 +108,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     }, [])
 
 
-    const toogleTheme = async () => {
+    const toogleDarkMode = async () => {
         const newMode = !isDarkMode
         setIsDarkMode(newMode)
         await AsyncStorage.setItem("isDarkMode", JSON.stringify(newMode))
@@ -117,7 +117,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     const colors = isDarkMode ? darkColors : lightColors
 
     return (
-        <ThemeContext.Provider value={{ isDarkMode, toogleTheme, colors }}>
+        <ThemeContext.Provider value={{ isDarkMode, toogleDarkMode, colors }}>
             {children}
         </ThemeContext.Provider>
     )

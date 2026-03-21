@@ -3,6 +3,8 @@ import useTheme from "@/hooks/useTheme";
 import { createHomeStyles } from "@/assets/style/home.style";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { LinearGradient } from "expo-linear-gradient"
+import Header from "@/Components/Header";
+import TodoInput from "@/Components/TodoInput";
 
 export default function Index() {
 
@@ -13,7 +15,8 @@ export default function Index() {
     <LinearGradient style={homestyles.container} colors={colors.gradients.background}>
       <StatusBar barStyle={colors.statusBarStyle} />
       <SafeAreaView style={homestyles.container}>
-        <Text>Edit theme</Text>
+        <Header />
+        <TodoInput />
         <TouchableOpacity onPress={toogleDarkMode}>
           <Text>Toggle dark mode</Text>
         </TouchableOpacity>
@@ -21,5 +24,3 @@ export default function Index() {
     </LinearGradient>
   );
 }
-
-

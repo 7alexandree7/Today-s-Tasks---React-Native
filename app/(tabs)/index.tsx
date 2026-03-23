@@ -3,7 +3,7 @@ import useTheme from "@/hooks/useTheme";
 import { createHomeStyles } from "@/assets/style/home.style";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { LinearGradient } from "expo-linear-gradient"
-import Header from "@/Components/Header";
+import HeaderTodos from "@/Components/HeaderTodos";
 import TodoInput from "@/Components/TodoInput";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
@@ -25,7 +25,7 @@ export default function Index() {
     <LinearGradient style={homestyles.container} colors={colors.gradients.background}>
       <StatusBar barStyle={colors.statusBarStyle} />
       <SafeAreaView style={homestyles.container}>
-        <Header />
+        <HeaderTodos />
         <TodoInput />
 
         <FlatList
